@@ -1,0 +1,25 @@
+# Ignore Python virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore local database exports or logs if we want to save others,
+# but we DO want to keep fluent_futures_db.sql in Git for replication!
+
+# Ignore WordPress temp upgrade directories
+wp-content/upgrade/
+wp-content/cache/
+wp-content/blogs.dir/
+
+# Ignore log files
+*.log
+
+# Ignore heavy media assets (videos and raw formats)
+*.mov
+*.mp4
+*.heic
+*.HEIC
