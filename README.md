@@ -49,3 +49,4 @@ Si necesitas acceder al panel de administración de WordPress (`http://localhost
 *   `fluent_futures_db.sql`: Respaldo completo de la base de datos MySQL 8.0.
 *   `wp-content/`: Directorio local que contiene plugins (como Polylang), temas (Twenty Twenty-Four) y todas las imágenes cargadas por el cliente (`wp-content/uploads/`).
 *   `setup_pages.php`: Script de automatización utilizado para inicializar y dar estilo a las páginas.
+# fluentfutures
