@@ -9,6 +9,8 @@ Thumbs.db
 
 # Ignore local database exports or logs if we want to save others,
 # but we DO want to keep fluent_futures_db.sql in Git for replication!
+fluent_futures_local.sql
+wp-content.zip
 
 # Ignore WordPress temp upgrade directories
 wp-content/upgrade/

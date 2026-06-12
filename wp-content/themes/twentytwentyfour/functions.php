@@ -192,3 +192,18 @@ if ( ! function_exists( 'twentytwentyfour_pattern_categories' ) ) :
 endif;
 
 add_action( 'init', 'twentytwentyfour_pattern_categories' );
+
+/**
+ * Enqueue custom premium styles for Fluent Futures on frontend and in block editor
+ */
+function fluent_futures_enqueue_custom_styles() {
+	wp_enqueue_style(
+		'fluent-futures-custom-styles',
+		get_theme_file_uri( 'custom-styles.css' ),
+		array(),
+		'1.0.0'
+	);
+}
+add_action( 'wp_enqueue_scripts', 'fluent_futures_enqueue_custom_styles' );
+add_action( 'enqueue_block_editor_assets', 'fluent_futures_enqueue_custom_styles' );
+

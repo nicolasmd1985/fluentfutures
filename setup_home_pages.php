@@ -3,180 +3,7 @@
  * Script to set up bilingual Home pages for Fluent Futures with real assets and premium CSS styling
  */
 
-$custom_css = '<!-- wp:html -->
-<style>
-@import url(\'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap\');
-
-/* Apply global deep dark navy theme */
-body, .wp-site-blocks, .has-background {
-    background-color: #060b26 !important;
-    color: #f1f5f9 !important;
-    font-family: \'Inter\', sans-serif !important;
-}
-
-/* Global headings styling */
-h1, h2, h3, h4, h5, h6, .wp-block-heading {
-    font-family: \'Outfit\', sans-serif !important;
-    color: #ffffff !important;
-    letter-spacing: -0.5px !important;
-}
-
-/* Header styling override - Dark Glassmorphism */
-header.wp-block-template-part, .wp-block-template-part header, .site-header {
-    background-color: rgba(6, 11, 38, 0.92) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-    padding-top: 16px !important;
-    padding-bottom: 16px !important;
-}
-
-/* Site Brand Logo Title */
-.wp-block-site-title a {
-    color: #ffffff !important;
-    font-family: \'Outfit\', sans-serif !important;
-    font-weight: 700 !important;
-    font-size: 20px !important;
-    letter-spacing: -0.5px !important;
-}
-
-/* Header Navigation items */
-.wp-block-navigation a, .wp-block-navigation-item__content {
-    color: #cbd5e1 !important;
-    font-family: \'Inter\', sans-serif !important;
-    font-size: 15px !important;
-    font-weight: 500 !important;
-    transition: all 0.3s ease !important;
-}
-
-.wp-block-navigation a:hover, .wp-block-navigation-item__content:hover {
-    color: #f26419 !important; /* Safety Orange hover */
-    text-shadow: 0 0 10px rgba(242, 100, 25, 0.3) !important;
-}
-
-/* Footer styling override */
-footer.wp-block-template-part, .wp-block-template-part footer, .site-footer {
-    background-color: #030616 !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-    padding-top: 60px !important;
-    padding-bottom: 40px !important;
-}
-
-footer p, footer span, footer a {
-    color: #94a3b8 !important;
-    font-family: \'Inter\', sans-serif !important;
-}
-
-footer a:hover {
-    color: #f26419 !important;
-}
-
-/* Hero section gradient glow styling */
-.fluent-hero {
-    background: radial-gradient(circle at 85% 25%, rgba(242, 100, 25, 0.07), transparent 45%), 
-                radial-gradient(circle at 15% 75%, rgba(0, 180, 216, 0.04), transparent 45%),
-                #060b26 !important;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-/* Glowing container for hero image */
-.fluent-img-glow {
-    border-radius: 20px !important;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 40px rgba(242, 100, 25, 0.12) !important;
-    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
-    border: 1px solid rgba(255, 255, 255, 0.06) !important;
-}
-
-.fluent-img-glow:hover {
-    transform: translateY(-4px) scale(1.01) !important;
-    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7), 0 0 50px rgba(242, 100, 25, 0.22) !important;
-}
-
-/* Meet the Founder section styles */
-.fluent-founder-section {
-    background-color: #0a0f2b !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.fluent-img-normal {
-    border-radius: 20px !important;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
-    transition: all 0.4s ease !important;
-    border: 1px solid rgba(255, 255, 255, 0.06) !important;
-}
-
-.fluent-img-normal:hover {
-    transform: scale(1.01) !important;
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5) !important;
-}
-
-/* Gallery Section styling */
-.fluent-gallery-section {
-    background-color: #060b26 !important;
-}
-
-/* Premium Glassmorphic Cards */
-.fluent-card {
-    background-color: #0d1235 !important;
-    border: 1px solid rgba(255, 255, 255, 0.06) !important;
-    border-radius: 20px !important;
-    padding: 28px !important;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5) !important;
-}
-
-.fluent-card:hover {
-    transform: translateY(-8px) !important;
-    border-color: rgba(242, 100, 25, 0.35) !important;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 30px rgba(242, 100, 25, 0.08) !important;
-}
-
-.fluent-card img {
-    border-radius: 12px !important;
-    transition: transform 0.5s ease !important;
-}
-
-.fluent-card:hover img {
-    transform: scale(1.03) !important;
-}
-
-/* WhatsApp CTA Button */
-.fluent-btn-whatsapp a {
-    background-color: #25d366 !important;
-    border: none !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25) !important;
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
-    border-radius: 8px !important;
-    padding: 12px 24px !important;
-}
-
-.fluent-btn-whatsapp a:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4), 0 0 15px rgba(37, 211, 102, 0.2) !important;
-}
-
-/* TikTok CTA Button */
-.fluent-btn-tiktok a {
-    background-color: transparent !important;
-    border: 2px solid rgba(255, 255, 255, 0.3) !important;
-    color: #ffffff !important;
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
-    border-radius: 8px !important;
-    padding: 10px 22px !important;
-}
-
-.fluent-btn-tiktok a:hover {
-    background-color: #ffffff !important;
-    border-color: #ffffff !important;
-    color: #060b26 !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15) !important;
-}
-</style>
-<!-- /wp:html -->';
+$custom_css = '';
 
 // Define English content
 $en_content = $custom_css . '
@@ -187,7 +14,7 @@ $en_content = $custom_css . '
     <!-- wp:column {"verticalAlignment":"center","width":"50%"} -->
     <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%">
       <!-- wp:heading {"level":1,"style":{"typography":{"fontSize":"3.5rem","fontWeight":"800","lineHeight":"1.25"}},"textColor":"white"} -->
-      <h1 class="wp-block-heading has-white-color has-text-color" style="font-size:3.5rem;font-weight:800;line-height:1.25">Welcome to<br/>Fluent Futures</h1>
+      <h1 class="wp-block-heading has-white-color has-text-color" style="font-size:3.5rem;font-weight:800;line-height:1.25">Welcome to<br/>Fluent Futures!</h1>
       <!-- /wp:heading -->
 
       <!-- wp:paragraph {"style":{"typography":{"fontSize":"1.25rem","lineHeight":"1.65"}},"textColor":"slate-300"} -->
@@ -454,6 +281,7 @@ $en_post_id = wp_insert_post(array(
     'post_content'  => $en_content,
     'post_status'   => 'publish',
     'post_type'     => 'page',
+    'menu_order'    => 1,
 ));
 
 // 2. Create or Update Spanish Home Page
@@ -463,6 +291,7 @@ $es_post_id = wp_insert_post(array(
     'post_content'  => $es_content,
     'post_status'   => 'publish',
     'post_type'     => 'page',
+    'menu_order'    => 1,
 ));
 
 if (is_wp_error($en_post_id) || is_wp_error($es_post_id)) {

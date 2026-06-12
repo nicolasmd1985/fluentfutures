@@ -3,273 +3,7 @@
  * Script to set up bilingual pages (Home, Academy, Corporate) for Fluent Futures
  */
 
-$custom_css = '<!-- wp:html -->
-<style>
-@import url(\'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap\');
-
-/* Apply global deep dark navy theme */
-body, .wp-site-blocks, .has-background {
-    background-color: #060b26 !important;
-    color: #f1f5f9 !important;
-    font-family: \'Inter\', sans-serif !important;
-}
-
-/* Global headings styling */
-h1, h2, h3, h4, h5, h6, .wp-block-heading {
-    font-family: \'Outfit\', sans-serif !important;
-    color: #ffffff !important;
-    letter-spacing: -0.5px !important;
-}
-
-/* Header styling override - Dark Glassmorphism */
-header.wp-block-template-part, .wp-block-template-part header, .site-header {
-    background-color: rgba(6, 11, 38, 0.92) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-    padding-top: 16px !important;
-    padding-bottom: 16px !important;
-}
-
-/* Site Brand Logo Title */
-.wp-block-site-title a {
-    color: #ffffff !important;
-    font-family: \'Outfit\', sans-serif !important;
-    font-weight: 700 !important;
-    font-size: 20px !important;
-    letter-spacing: -0.5px !important;
-}
-
-/* Header Navigation items */
-.wp-block-navigation a, .wp-block-navigation-item__content {
-    color: #cbd5e1 !important;
-    font-family: \'Inter\', sans-serif !important;
-    font-size: 15px !important;
-    font-weight: 500 !important;
-    transition: all 0.3s ease !important;
-}
-
-.wp-block-navigation a:hover, .wp-block-navigation-item__content:hover {
-    color: #f26419 !important; /* Safety Orange hover */
-    text-shadow: 0 0 10px rgba(242, 100, 25, 0.3) !important;
-}
-
-/* Footer styling override */
-footer.wp-block-template-part, .wp-block-template-part footer, .site-footer {
-    background-color: #030616 !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-    padding-top: 60px !important;
-    padding-bottom: 40px !important;
-}
-
-footer p, footer span, footer a {
-    color: #94a3b8 !important;
-    font-family: \'Inter\', sans-serif !important;
-}
-
-footer a:hover {
-    color: #f26419 !important;
-}
-
-/* Hero section gradient glow styling */
-.fluent-hero {
-    background: radial-gradient(circle at 85% 25%, rgba(242, 100, 25, 0.07), transparent 45%), 
-                radial-gradient(circle at 15% 75%, rgba(0, 180, 216, 0.04), transparent 45%),
-                #060b26 !important;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-/* Glowing container for hero image */
-.fluent-img-glow {
-    border-radius: 20px !important;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 40px rgba(242, 100, 25, 0.12) !important;
-    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
-    border: 1px solid rgba(255, 255, 255, 0.06) !important;
-}
-
-.fluent-img-glow:hover {
-    transform: translateY(-4px) scale(1.01) !important;
-    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7), 0 0 50px rgba(242, 100, 25, 0.22) !important;
-}
-
-/* Meet the Founder section styles */
-.fluent-founder-section {
-    background-color: #0a0f2b !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.fluent-img-normal {
-    border-radius: 20px !important;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
-    transition: all 0.4s ease !important;
-    border: 1px solid rgba(255, 255, 255, 0.06) !important;
-}
-
-.fluent-img-normal:hover {
-    transform: scale(1.01) !important;
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5) !important;
-}
-
-/* Gallery Section styling */
-.fluent-gallery-section {
-    background-color: #060b26 !important;
-}
-
-/* Premium Glassmorphic Cards */
-.fluent-card {
-    background-color: #0d1235 !important;
-    border: 1px solid rgba(255, 255, 255, 0.06) !important;
-    border-radius: 20px !important;
-    padding: 28px !important;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5) !important;
-}
-
-.fluent-card:hover {
-    transform: translateY(-8px) !important;
-    border-color: rgba(242, 100, 25, 0.35) !important;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 30px rgba(242, 100, 25, 0.08) !important;
-}
-
-.fluent-card img {
-    border-radius: 12px !important;
-    transition: transform 0.5s ease !important;
-}
-
-.fluent-card:hover img {
-    transform: scale(1.03) !important;
-}
-
-/* WhatsApp CTA Button */
-.fluent-btn-whatsapp a {
-    background-color: #25d366 !important;
-    border: none !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25) !important;
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
-    border-radius: 8px !important;
-    padding: 12px 24px !important;
-    text-decoration: none !important;
-    display: inline-block !important;
-}
-
-.fluent-btn-whatsapp a:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4), 0 0 15px rgba(37, 211, 102, 0.2) !important;
-}
-
-/* TikTok CTA Button */
-.fluent-btn-tiktok a {
-    background-color: transparent !important;
-    border: 2px solid rgba(255, 255, 255, 0.3) !important;
-    color: #ffffff !important;
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
-    border-radius: 8px !important;
-    padding: 10px 22px !important;
-    text-decoration: none !important;
-    display: inline-block !important;
-}
-
-.fluent-btn-tiktok a:hover {
-    background-color: #ffffff !important;
-    border-color: #ffffff !important;
-    color: #060b26 !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15) !important;
-}
-
-/* Orange CTA Button */
-.fluent-btn-orange a {
-    background-color: #f26419 !important;
-    border: none !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 14px rgba(242, 100, 25, 0.25) !important;
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
-    border-radius: 8px !important;
-    padding: 12px 24px !important;
-    text-decoration: none !important;
-    display: inline-block !important;
-}
-
-.fluent-btn-orange a:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 20px rgba(242, 100, 25, 0.4), 0 0 15px rgba(242, 100, 25, 0.2) !important;
-}
-
-/* Language Toggle styling */
-.fluent-lang-toggle {
-    position: fixed !important;
-    top: 22px !important;
-    right: 40px !important;
-    z-index: 100000 !important;
-    font-family: \'Inter\', sans-serif !important;
-    font-size: 13px !important;
-    font-weight: 700 !important;
-    color: #cbd5e1 !important;
-    text-decoration: none !important;
-    background: rgba(13, 18, 53, 0.85) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    padding: 6px 14px !important;
-    border-radius: 20px !important;
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-}
-
-.fluent-lang-toggle:hover {
-    color: #f26419 !important;
-    border-color: rgba(242, 100, 25, 0.4) !important;
-    background: rgba(242, 100, 25, 0.08) !important;
-    box-shadow: 0 0 15px rgba(242, 100, 25, 0.2) !important;
-}
-
-/* Badge styling */
-.fluent-badge {
-    background-color: rgba(242, 100, 25, 0.1) !important;
-    color: #f26419 !important;
-    border: 1px solid rgba(242, 100, 25, 0.2) !important;
-    padding: 6px 14px !important;
-    border-radius: 30px !important;
-    font-size: 13px !important;
-    font-weight: 600 !important;
-    display: inline-block !important;
-    letter-spacing: 0.5px !important;
-    text-transform: uppercase !important;
-    margin-bottom: 16px !important;
-}
-
-/* Curriculum Section Layout */
-.fluent-curriculum-section {
-    background-color: #060b26 !important;
-    padding-top: 80px !important;
-    padding-bottom: 80px !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.04) !important;
-}
-
-/* Level details */
-.fluent-level-title {
-    font-size: 1.25rem !important;
-    font-weight: 700 !important;
-    color: #ffffff !important;
-    margin-bottom: 12px !important;
-}
-
-.fluent-level-desc {
-    font-size: 0.95rem !important;
-    line-height: 1.6 !important;
-    color: #94a3b8 !important;
-}
-
-/* CSC Partner box */
-.csc-partner-card {
-    background: linear-gradient(135deg, #0e1538 0%, #060b26 100%) !important;
-    border: 1px solid rgba(242, 100, 25, 0.15) !important;
-}
-</style>
-<!-- /wp:html -->';
+$custom_css = '';
 
 // -------------------------------------------------------------
 // PAGE CONTENT GENERATORS
@@ -277,9 +11,9 @@ footer a:hover {
 
 // ENGLISH HOME PAGE (With Program Cards added)
 $en_home_content = $custom_css . '
-<!-- wp:html -->
-<a href="http://localhost:8080/es/" class="fluent-lang-toggle">ES</a>
-<!-- /wp:html -->
+<!-- wp:paragraph {"align":"right","className":"fluent-lang-toggle"} -->
+<p class="has-text-align-right fluent-lang-toggle"><a href="http://localhost:8080/es/">ES</a></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:group {"metadata":{"name":"Hero Section"},"align":"full","className":"fluent-hero","style":{"spacing":{"padding":{"top":"90px","bottom":"90px","left":"24px","right":"24px"},"margin":{"top":"0px","bottom":"0px"}},"color":{"background":"#060b26"}},"textColor":"white","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull fluent-hero has-white-color has-background-color has-text-color" style="margin-top:0px;margin-bottom:0px;padding-top:90px;padding-bottom:90px;padding-left:24px;padding-right:24px;background-color:#060b26">
@@ -288,7 +22,7 @@ $en_home_content = $custom_css . '
     <!-- wp:column {"verticalAlignment":"center","width":"50%"} -->
     <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%">
       <!-- wp:heading {"level":1,"style":{"typography":{"fontSize":"3.5rem","fontWeight":"800","lineHeight":"1.25"}},"textColor":"white"} -->
-      <h1 class="wp-block-heading has-white-color has-text-color" style="font-size:3.5rem;font-weight:800;line-height:1.25">Welcome to<br/>Fluent Futures</h1>
+      <h1 class="wp-block-heading has-white-color has-text-color" style="font-size:3.5rem;font-weight:800;line-height:1.25">Welcome to<br/>Fluent Futures!</h1>
       <!-- /wp:heading -->
 
       <!-- wp:paragraph {"style":{"typography":{"fontSize":"1.25rem","lineHeight":"1.65"}},"textColor":"slate-300"} -->
@@ -473,9 +207,9 @@ $en_home_content = $custom_css . '
 
 // SPANISH HOME PAGE (Inicio - With Program Cards added)
 $es_home_content = $custom_css . '
-<!-- wp:html -->
-<a href="http://localhost:8080/" class="fluent-lang-toggle">EN</a>
-<!-- /wp:html -->
+<!-- wp:paragraph {"align":"right","className":"fluent-lang-toggle"} -->
+<p class="has-text-align-right fluent-lang-toggle"><a href="http://localhost:8080/">EN</a></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:group {"metadata":{"name":"Hero Section ES"},"align":"full","className":"fluent-hero","style":{"spacing":{"padding":{"top":"90px","bottom":"90px","left":"24px","right":"24px"},"margin":{"top":"0px","bottom":"0px"}},"color":{"background":"#060b26"}},"textColor":"white","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull fluent-hero has-white-color has-background-color has-text-color" style="margin-top:0px;margin-bottom:0px;padding-top:90px;padding-bottom:90px;padding-left:24px;padding-right:24px;background-color:#060b26">
@@ -669,9 +403,9 @@ $es_home_content = $custom_css . '
 
 // ENGLISH ACADEMY PAGE
 $en_academy_content = $custom_css . '
-<!-- wp:html -->
-<a href="http://localhost:8080/es/academia/" class="fluent-lang-toggle">ES</a>
-<!-- /wp:html -->
+<!-- wp:paragraph {"align":"right","className":"fluent-lang-toggle"} -->
+<p class="has-text-align-right fluent-lang-toggle"><a href="http://localhost:8080/es/academia/">ES</a></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:group {"metadata":{"name":"Academy Hero Section"},"align":"full","className":"fluent-hero","style":{"spacing":{"padding":{"top":"80px","bottom":"80px","left":"24px","right":"24px"}},"color":{"background":"#060b26"}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull fluent-hero has-background-color" style="padding-top:80px;padding-bottom:80px;padding-left:24px;padding-right:24px;background-color:#060b26">
@@ -679,9 +413,9 @@ $en_academy_content = $custom_css . '
   <div class="wp-block-columns alignwide">
     <!-- wp:column {"verticalAlignment":"center","width":"55%"} -->
     <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:55%">
-      <!-- wp:html -->
-      <span class="fluent-badge">Adult English Program</span>
-      <!-- /wp:html -->
+      <!-- wp:paragraph {"className":"fluent-badge"} -->
+      <p class="fluent-badge">Adult English Program</p>
+      <!-- /wp:paragraph -->
 
       <!-- wp:heading {"level":1,"style":{"typography":{"fontSize":"3rem","fontWeight":"800","lineHeight":"1.2"}},"textColor":"white"} -->
       <h1 class="wp-block-heading" style="font-size:3rem;font-weight:800;line-height:1.2;color:#ffffff">Fluent Futures Academy</h1>
@@ -739,31 +473,49 @@ $en_academy_content = $custom_css . '
   <div class="wp-block-columns alignwide">
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Level 1</div>
-      <div class="fluent-level-title">Conversational Basics</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Level 1</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Conversational Basics</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Build a strong foundation. Learn greetings, introductions, numbers, simple present-tense questions, and essential everyday vocabulary.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
 
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Level 2</div>
-      <div class="fluent-level-title">Daily Interactions</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Level 2</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Daily Interactions</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Get comfortable with daily routines, telling time, talking about hobbies, shopping, ordering food, and navigating basic social situations.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
 
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Level 3</div>
-      <div class="fluent-level-title">Travel &amp; Sharing</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Level 3</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Travel &amp; Sharing</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Expand your horizons. Practice describing past experiences, talking about travel, asking for directions, and sharing simple opinions.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
   </div>
@@ -777,31 +529,49 @@ $en_academy_content = $custom_css . '
   <div class="wp-block-columns alignwide">
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Level 4</div>
-      <div class="fluent-level-title">Discussion &amp; Debate</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Level 4</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Discussion &amp; Debate</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Participate in group discussions. Talk in detail about current events, books, movies, future plans, and express thoughts on complex topics.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
 
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Level 5</div>
-      <div class="fluent-level-title">Workplace &amp; Community</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Level 5</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Workplace &amp; Community</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Communicate effectively in professional and public environments. Learn how to explain situations, speak to supervisors, and connect ideas.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
 
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Level 6</div>
-      <div class="fluent-level-title">Conversational Fluency</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Level 6</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Conversational Fluency</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Speak with native-like confidence. Master advanced idioms, natural phrasing, storytelling, and discuss abstract concepts fluidly.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
   </div>
@@ -811,9 +581,9 @@ $en_academy_content = $custom_css . '
 
 // SPANISH ACADEMY PAGE (Academia)
 $es_academy_content = $custom_css . '
-<!-- wp:html -->
-<a href="http://localhost:8080/academy/" class="fluent-lang-toggle">EN</a>
-<!-- /wp:html -->
+<!-- wp:paragraph {"align":"right","className":"fluent-lang-toggle"} -->
+<p class="has-text-align-right fluent-lang-toggle"><a href="http://localhost:8080/academy/">EN</a></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:group {"metadata":{"name":"Academy Hero Section ES"},"align":"full","className":"fluent-hero","style":{"spacing":{"padding":{"top":"80px","bottom":"80px","left":"24px","right":"24px"}},"color":{"background":"#060b26"}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull fluent-hero has-background-color" style="padding-top:80px;padding-bottom:80px;padding-left:24px;padding-right:24px;background-color:#060b26">
@@ -821,9 +591,9 @@ $es_academy_content = $custom_css . '
   <div class="wp-block-columns alignwide">
     <!-- wp:column {"verticalAlignment":"center","width":"55%"} -->
     <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:55%">
-      <!-- wp:html -->
-      <span class="fluent-badge">Programa de Inglés para Adultos</span>
-      <!-- /wp:html -->
+      <!-- wp:paragraph {"className":"fluent-badge"} -->
+      <p class="fluent-badge">Programa de Inglés para Adultos</p>
+      <!-- /wp:paragraph -->
 
       <!-- wp:heading {"level":1,"style":{"typography":{"fontSize":"3rem","fontWeight":"800","lineHeight":"1.2"}},"textColor":"white"} -->
       <h1 class="wp-block-heading" style="font-size:3rem;font-weight:800;line-height:1.2;color:#ffffff">Academia Fluent Futures</h1>
@@ -881,31 +651,49 @@ $es_academy_content = $custom_css . '
   <div class="wp-block-columns alignwide">
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Nivel 1</div>
-      <div class="fluent-level-title">Bases Conversacionales</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Nivel 1</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Bases Conversacionales</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Construye una base sólida. Aprende saludos, presentaciones, números, preguntas sencillas en presente y vocabulario esencial del día a día.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
 
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Nivel 2</div>
-      <div class="fluent-level-title">Interacciones Diarias</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Nivel 2</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Interacciones Diarias</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Gana comodidad con rutinas cotidianas, dar la hora, pasatiempos, compras, ordenar comida y desenvolverte en interacciones sociales básicas.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
 
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Nivel 3</div>
-      <div class="fluent-level-title">Viajes y Experiencias</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Nivel 3</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Viajes y Experiencias</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Amplía tus horizontes. Practica describiendo experiencias pasadas, planes de viaje, pedir indicaciones y expresar opiniones sencillas.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
   </div>
@@ -919,31 +707,49 @@ $es_academy_content = $custom_css . '
   <div class="wp-block-columns alignwide">
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Nivel 4</div>
-      <div class="fluent-level-title">Discusión y Debate</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Nivel 4</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Discusión y Debate</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Participa en discusiones grupales. Habla en detalle sobre noticias de actualidad, planes futuros, libros, películas y expresa opiniones complejas.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
 
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Nivel 5</div>
-      <div class="fluent-level-title">Inglés Laboral y Social</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Nivel 5</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Inglés Laboral y Social</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Comunícate eficazmente en entornos profesionales y públicos. Aprende a explicar situaciones extensas, hablar con supervisores y conectar ideas.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
 
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Nivel 6</div>
-      <div class="fluent-level-title">Fluidez Conversacional</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Nivel 6</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Fluidez Conversacional</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Habla con total confianza. Domina modismos avanzados, frases naturales, narración de historias y discusiones abstractas fluidas.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
   </div>
@@ -953,9 +759,9 @@ $es_academy_content = $custom_css . '
 
 // ENGLISH CORPORATE PAGE
 $en_corporate_content = $custom_css . '
-<!-- wp:html -->
-<a href="http://localhost:8080/es/corporativo/" class="fluent-lang-toggle">ES</a>
-<!-- /wp:html -->
+<!-- wp:paragraph {"align":"right","className":"fluent-lang-toggle"} -->
+<p class="has-text-align-right fluent-lang-toggle"><a href="http://localhost:8080/es/corporativo/">ES</a></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:group {"metadata":{"name":"Corporate Hero Section"},"align":"full","className":"fluent-hero","style":{"spacing":{"padding":{"top":"80px","bottom":"80px","left":"24px","right":"24px"}},"color":{"background":"#060b26"}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull fluent-hero has-background-color" style="padding-top:80px;padding-bottom:80px;padding-left:24px;padding-right:24px;background-color:#060b26">
@@ -963,9 +769,9 @@ $en_corporate_content = $custom_css . '
   <div class="wp-block-columns alignwide">
     <!-- wp:column {"verticalAlignment":"center","width":"55%"} -->
     <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:55%">
-      <!-- wp:html -->
-      <span class="fluent-badge">Corporate B2B Program</span>
-      <!-- /wp:html -->
+      <!-- wp:paragraph {"className":"fluent-badge"} -->
+      <p class="fluent-badge">Corporate B2B Program</p>
+      <!-- /wp:paragraph -->
 
       <!-- wp:heading {"level":1,"style":{"typography":{"fontSize":"3rem","fontWeight":"800","lineHeight":"1.2"}},"textColor":"white"} -->
       <h1 class="wp-block-heading" style="font-size:3rem;font-weight:800;line-height:1.2;color:#ffffff">Fluent Futures Corporate</h1>
@@ -1023,31 +829,49 @@ $en_corporate_content = $custom_css . '
   <div class="wp-block-columns alignwide">
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Level 1</div>
-      <div class="fluent-level-title">Job Site Foundations</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Level 1</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Job Site Foundations</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Employees learn basic English for introductions, job titles, tools, materials, locations, safety words, and simple workplace questions.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
 
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Level 2</div>
-      <div class="fluent-level-title">Daily Work &amp; Instructions</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Level 2</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Daily Work &amp; Instructions</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Employees learn to talk about routines, responsibilities, schedules, instructions, and obligations using phrases like "I need," "I have to," and "Can you?".</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
 
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Level 3</div>
-      <div class="fluent-level-title">Past Work &amp; Job Reports</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Level 3</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Past Work &amp; Job Reports</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Employees learn to report completed tasks, explain worksite issues, and describe exactly what happened during a shift clearly.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
   </div>
@@ -1061,31 +885,49 @@ $en_corporate_content = $custom_css . '
   <div class="wp-block-columns alignwide">
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Level 4</div>
-      <div class="fluent-level-title">Problem Solving on Site</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Level 4</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Problem Solving on Site</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Employees practice asking for help, comparing construction materials, explaining repairs, discussing deadlines, and resolving safety issues.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
 
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Level 5</div>
-      <div class="fluent-level-title">Workplace Communication</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Level 5</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Workplace Communication</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Employees learn how to explain complex worksite situations, report delays to supervisors, coordinate with subteams, and connect details clearly.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
 
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Level 6</div>
-      <div class="fluent-level-title">Fluency for Crew Leaders</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Level 6</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Fluency for Crew Leaders</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Employees practice real job-site conversations, active safety briefings, work orders, inspections, project schedules, and client communication.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
   </div>
@@ -1127,9 +969,9 @@ $en_corporate_content = $custom_css . '
 
 // SPANISH CORPORATE PAGE (Corporativo)
 $es_corporate_content = $custom_css . '
-<!-- wp:html -->
-<a href="http://localhost:8080/corporate/" class="fluent-lang-toggle">EN</a>
-<!-- /wp:html -->
+<!-- wp:paragraph {"align":"right","className":"fluent-lang-toggle"} -->
+<p class="has-text-align-right fluent-lang-toggle"><a href="http://localhost:8080/corporate/">EN</a></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:group {"metadata":{"name":"Corporate Hero Section ES"},"align":"full","className":"fluent-hero","style":{"spacing":{"padding":{"top":"80px","bottom":"80px","left":"24px","right":"24px"}},"color":{"background":"#060b26"}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull fluent-hero has-background-color" style="padding-top:80px;padding-bottom:80px;padding-left:24px;padding-right:24px;background-color:#060b26">
@@ -1137,9 +979,9 @@ $es_corporate_content = $custom_css . '
   <div class="wp-block-columns alignwide">
     <!-- wp:column {"verticalAlignment":"center","width":"55%"} -->
     <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:55%">
-      <!-- wp:html -->
-      <span class="fluent-badge">Programa Corporativo B2B</span>
-      <!-- /wp:html -->
+      <!-- wp:paragraph {"className":"fluent-badge"} -->
+      <p class="fluent-badge">Programa Corporativo B2B</p>
+      <!-- /wp:paragraph -->
 
       <!-- wp:heading {"level":1,"style":{"typography":{"fontSize":"3rem","fontWeight":"800","lineHeight":"1.2"}},"textColor":"white"} -->
       <h1 class="wp-block-heading" style="font-size:3rem;font-weight:800;line-height:1.2;color:#ffffff">Fluent Futures Corporate</h1>
@@ -1186,7 +1028,7 @@ $es_corporate_content = $custom_css . '
 <!-- wp:group {"className":"fluent-curriculum-section","align":"full","style":{"spacing":{"padding":{"top":"90px","bottom":"90px","left":"24px","right":"24px"}},"color":{"background":"#060b26"}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull fluent-curriculum-section has-background-color" style="padding-top:90px;padding-bottom:90px;padding-left:24px;padding-right:24px;background-color:#060b26">
   <!-- wp:heading {"textAlign":"center","level":2,"style":{"typography":{"fontSize":"2.5rem","fontWeight":"700"}},"textColor":"white"} -->
-  <h2 class="wp-block-heading has-text-align-center" style="font-size:2.5rem;font-weight:700;color:#ffffff;margin-bottom:16px">Currícula de Inglés de Construcción</h2>
+  <h2 class="wp-block-heading has-text-align-center" style="font-size:2.5rem;font-weight:700;color:#ffffff;margin-bottom:16px">Plan de Estudios de Inglés de Construcción</h2>
   <!-- /wp:heading -->
 
   <!-- wp:paragraph {"textAlign":"center","style":{"typography":{"fontSize":"1.125rem"}},"textColor":"slate-300"} -->
@@ -1197,31 +1039,49 @@ $es_corporate_content = $custom_css . '
   <div class="wp-block-columns alignwide">
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Nivel 1</div>
-      <div class="fluent-level-title">Fundamentos de Obra</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Nivel 1</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Fundamentos de Obra</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Inglés básico para presentaciones, cargos, herramientas, materiales, ubicaciones, términos de seguridad y preguntas laborales sencillas.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
 
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Nivel 2</div>
-      <div class="fluent-level-title">Trabajo Diario e Instrucciones</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Nivel 2</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Trabajo Diario e Instrucciones</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Hablar sobre rutinas, responsabilidades en obra, horarios, pautas de seguridad y frases de obligación como "I need," "I have to," y "Can you?".</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
 
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Nivel 3</div>
-      <div class="fluent-level-title">Trabajo Pasado y Reportes</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Nivel 3</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Trabajo Pasado y Reportes</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Reportar tareas completadas, explicar incidentes en la obra y aprender vocabulario para reportar lo que sucedió durante el turno.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
   </div>
@@ -1235,31 +1095,49 @@ $es_corporate_content = $custom_css . '
   <div class="wp-block-columns alignwide">
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Nivel 4</div>
-      <div class="fluent-level-title">Resolución de Problemas en Obra</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Nivel 4</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Resolución de Problemas en Obra</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Pedir ayuda, comparar materiales de construcción, describir reparaciones, discutir plazos y resolver problemas e incidentes en el sitio.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
 
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Nivel 5</div>
-      <div class="fluent-level-title">Comunicación Laboral</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Nivel 5</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Comunicación Laboral</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Explicar situaciones de obra complejas, reportar retrasos a supervisores, coordinar con subcontratistas y conectar detalles con claridad.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
 
     <!-- wp:column {"width":"33.33%","className":"fluent-card"} -->
     <div class="wp-block-column fluent-card" style="flex-basis:33.33%">
-      <!-- wp:html -->
-      <div class="fluent-level-title" style="color:#f26419">Nivel 6</div>
-      <div class="fluent-level-title">Fluidez para Líderes de Obra</div>
+      <!-- wp:paragraph {"className":"fluent-level-title","style":{"color":{"text":"#f26419"}}} -->
+      <p class="fluent-level-title style-color-orange" style="color:#f26419">Nivel 6</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:heading {"level":3,"className":"fluent-level-title","style":{"typography":{"fontSize":"1.25rem","fontWeight":"700"}},"textColor":"white"} -->
+      <h3 class="wp-block-heading fluent-level-title" style="font-size:1.25rem;font-weight:700;color:#ffffff">Fluidez para Líderes de Obra</h3>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"fluent-level-desc"} -->
       <p class="fluent-level-desc">Conversaciones reales en obra, charlas de seguridad activas, órdenes de trabajo, inspecciones, cronogramas de proyectos y comunicación con clientes.</p>
-      <!-- /wp:html -->
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:column -->
   </div>
@@ -1307,7 +1185,7 @@ $es_corporate_content = $custom_css . '
 require_once('wp-load.php');
 kses_remove_filters();
 
-function get_or_create_page($slug, $title, $content) {
+function get_or_create_page($slug, $title, $content, $menu_order = 0) {
     $page = get_page_by_path($slug);
     $post_id = $page ? $page->ID : 0;
     
@@ -1318,6 +1196,7 @@ function get_or_create_page($slug, $title, $content) {
         'post_status'   => 'publish',
         'post_type'     => 'page',
         'post_name'     => $slug,
+        'menu_order'    => $menu_order,
     ));
     
     if (is_wp_error($post_id)) {
@@ -1331,16 +1210,16 @@ function get_or_create_page($slug, $title, $content) {
 }
 
 // 1. Create or Update English & Spanish Home Pages
-$en_home_id = get_or_create_page('home', 'Home', $en_home_content);
-$es_home_id = get_or_create_page('inicio', 'Inicio', $es_home_content);
+$en_home_id = get_or_create_page('home', 'Home', $en_home_content, 1);
+$es_home_id = get_or_create_page('inicio', 'Inicio', $es_home_content, 1);
 
 // 2. Create or Update Academy & Academia Pages
-$en_academy_id = get_or_create_page('academy', 'Academy', $en_academy_content);
-$es_academia_id = get_or_create_page('academia', 'Academia', $es_academy_content);
+$en_academy_id = get_or_create_page('academy', 'Academy', $en_academy_content, 2);
+$es_academia_id = get_or_create_page('academia', 'Academia', $es_academy_content, 2);
 
 // 3. Create or Update Corporate & Corporativo Pages
-$en_corporate_id = get_or_create_page('corporate', 'Corporate', $en_corporate_content);
-$es_corporativo_id = get_or_create_page('corporativo', 'Corporativo', $es_corporate_content);
+$en_corporate_id = get_or_create_page('corporate', 'Corporate', $en_corporate_content, 3);
+$es_corporativo_id = get_or_create_page('corporativo', 'Corporativo', $es_corporate_content, 3);
 
 // 4. Polylang Language Assignments & Links
 if (function_exists('pll_set_post_language') && function_exists('pll_save_post_translations')) {

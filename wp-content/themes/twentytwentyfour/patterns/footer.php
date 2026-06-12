@@ -16,7 +16,7 @@
 		<div class="wp-block-column" style="flex-basis:30%">
 			<!-- wp:group {"style":{"dimensions":{"minHeight":""},"layout":{"selfStretch":"fit","flexSize":null}},"layout":{"type":"flex","orientation":"vertical"}} -->
 			<div class="wp-block-group">
-				<!-- wp:site-logo {"width":20,"shouldSyncIcon":true,"style":{"layout":{"selfStretch":"fit","flexSize":null}}} /-->
+				<!-- wp:site-logo {"width":60,"shouldSyncIcon":true,"style":{"layout":{"selfStretch":"fit","flexSize":null}}} /-->
 
 				<!-- wp:site-title {"level":0,"fontSize":"medium"} /-->
 
@@ -86,19 +86,12 @@
 					<h2 class="wp-block-heading has-medium-font-size has-body-font-family" style="font-style:normal;font-weight:600"><?php esc_html_e( 'Social', 'twentytwentyfour' ); ?></h2>
 					<!-- /wp:heading -->
 
-					<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group">
-
-						<!-- wp:navigation {"overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"},"style":{"typography":{"fontStyle":"normal","fontWeight":"400"},"spacing":{"blockGap":"var:preset|spacing|10"}},"fontSize":"small","ariaLabel":"<?php esc_attr_e( 'Social Media', 'twentytwentyfour' ); ?>"} -->
-
-						<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Facebook', 'twentytwentyfour' ); ?>","url":"#"} /-->
-						<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Instagram', 'twentytwentyfour' ); ?>","url":"#"} /-->
-						<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Twitter/X', 'twentytwentyfour' ); ?>","url":"#"} /-->
-
-						<!-- /wp:navigation -->
-
-					</div>
-					<!-- /wp:group -->
+					<!-- wp:social-links {"iconColor":"contrast-2","iconColorValue":"#cbd5e1","openInNewTab":true,"size":"has-normal-icon-size","style":{"spacing":{"blockGap":{"left":"16px"}}},"layout":{"type":"flex","justifyContent":"left"}} -->
+					<ul class="wp-block-social-links has-normal-icon-size has-icon-color">
+						<!-- wp:social-link {"url":"https://wa.me/14077605707","service":"whatsapp"} /-->
+						<!-- wp:social-link {"url":"https://www.tiktok.com/@fluentfutures.8","service":"tiktok"} /-->
+					</ul>
+					<!-- /wp:social-links -->
 				</div>
 				<!-- /wp:group -->
 			</div>
@@ -110,16 +103,24 @@
 
 	<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"0"}}}} -->
 	<div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:0">
-		<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|contrast"}}}},"textColor":"contrast-2","fontSize":"small"} -->
-		<p class="has-contrast-2-color has-text-color has-link-color has-small-font-size">
-		<?php
-			/* Translators: WordPress link. */
-			$wordpress_link = '<a href="' . esc_url( __( 'https://wordpress.org', 'twentytwentyfour' ) ) . '" rel="nofollow">WordPress</a>';
-			echo sprintf(
-				/* Translators: Designed with WordPress */
-				esc_html__( 'Designed with %1$s', 'twentytwentyfour' ),
-				$wordpress_link
-			);
+		<!-- wp:paragraph {"textColor":"contrast-2","fontSize":"small"} -->
+		<p class="has-contrast-2-color has-text-color has-small-font-size">
+			<?php
+			$current_lang = 'en';
+			if ( function_exists('pll_current_language') ) {
+				$current_lang = pll_current_language();
+			} else {
+				$locale = get_locale();
+				if ( strpos( $locale, 'es' ) === 0 ) {
+					$current_lang = 'es';
+				}
+			}
+
+			if ( $current_lang === 'es' ) {
+				echo '© ' . date('Y') . ' Fluent Futures. Todos los derechos reservados.';
+			} else {
+				echo '© ' . date('Y') . ' Fluent Futures. All rights reserved.';
+			}
 			?>
 		</p>
 		<!-- /wp:paragraph -->
