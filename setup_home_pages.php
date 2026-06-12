@@ -1,4 +1,9 @@
 <?php
+if (php_sapi_name() !== 'cli') {
+    header('HTTP/1.0 403 Forbidden');
+    die('Forbidden: This script can only be run from the command line.');
+}
+
 /**
  * Script to set up bilingual Home pages for Fluent Futures with real assets and premium CSS styling
  */
